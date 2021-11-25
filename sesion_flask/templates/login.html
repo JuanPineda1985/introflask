@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block title %} Inicio de Sesion {% endblock %}
+{% block body %}
+    <div class="container">
+        <form action="/login" method="post">
+            <div class="mb-3">
+              <label for="Email" class="form-label">Correo Electronico</label>
+              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">No compartiremos tu Informacion</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">contraseña</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <label for="rol">Rol</label>
+            <select name="rol" id="rol" class="form-control" >
+                <option value="" selected disabled>Seleccione un rol</option>
+                <option value="admin">Administrador</option>
+                <option value="quest">Invitado</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+{% endblock %}    

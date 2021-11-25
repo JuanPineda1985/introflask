@@ -1,0 +1,28 @@
+{% extends "maestra.html" %}
+{% block titulo%}Mi primera pagina con Flask{% endblock%}
+{% block contenido%}
+        <h2>{{data.subtitulo}}{{data.usuario}}</h2>
+        <br>
+        {% if data.cantvehiculos > 0 %}
+            <ul>
+                {% for vehiculo in data.vehiculos %}
+                <li>{{vehiculo}}</li>
+                {% endfor %}
+            </ul>
+            <div>Referencia de Renault: {{data.referencias[2]}}</div>
+        {% else %}
+            <h3>No existen vehículos para mostrar</h3>
+        {% endif %}
+        <select>
+            {% for vehiculo in data.vehiculos %}
+                <option value="{{vehiculo}}">{{vehiculo}}</option>
+            {% endfor %}
+        </select>
+        <table class="table table-hover table-bordered">
+            {% set cnt = 0 %}
+            {% for vehiculo in data.vehiculos %}
+                <tr><td>{{vehiculo}}</td><td>{{data.referencias[0]}}</td></tr>
+                {% set cnt = cnt + 1 %}
+            {% endfor %}
+        </table>
+{% endblock %}
