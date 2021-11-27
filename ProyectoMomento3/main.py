@@ -4,8 +4,10 @@ from werkzeug.wrappers import response
 from flask_pymongo import PyMongo
 from bson import json_util
 from bson.objectid import ObjectId
+from flask_cors import CORS
 import json
 app = Flask(__name__)
+CORS(app)
 
 #conexion a Servidor Mongo
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/dbBibliotek'
@@ -23,6 +25,7 @@ def add_libro():
         )
         response=jsonify({'mensaje':'libro agregado correctamente'})
         return response
+
 @app.route('/Libros', methods=['GET'])
 def get_libros():
     libros = mongo.db.libros.find()
